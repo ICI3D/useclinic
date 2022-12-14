@@ -1,0 +1,30 @@
+Package: useclinic
+Type: Package
+Title: Specialization of UseThis for ICI3D
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: This package provides a streamlined approach to creating
+    consistently structured packages (i.e. it is a package for making packages).
+    The structure is particularly designed to be convenient for "learning"
+    packages: packages that are intended to distribute course materials that are
+    a mixture of pre-written functions, data, exercise scripts, and interactive
+    tutorials.
+    This package implements a framing of materials in terms of themed
+    "sessions", which functions, data, scripts, and tutorials are in turn
+    organized by within the package (in addition to general, cross-session
+    objects).
+    `useclinic` composes and wraps functions from the `usethis`
+    library to accomplish setting up new learning packages, as well as
+    performing basic refactoring and extension tasks associated with the
+    conceptualization of the materials.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    glue,
+    usethis
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.2
+Suggests:
+    roxygen2
