@@ -55,6 +55,8 @@
 #' helloworld(1) # nope
 #' a <- 1
 #' helloworld(a) # nope
+#' a <- "Carl"
+#' helloworld(a) # works
 #' helloworld(c("Alice", "Bob")) # nope
 #' helloworld("") # nope
 
@@ -104,7 +106,16 @@ checker <- function(reqexpr, msg) {
   )) |> as.function()
 }
 
-check_character <- checker(is.character(x), "`%s` is not class 'character'.")
+#' These are the definitions that you would replace for your specific course.
+#' For the messages, you can write anything you like, but must include one
+#' (and only one) %s, which is where the variable name will appear in error
+#' messages.
+#'
+#' In general, you should try to write these messages in a consistent voice. For
+#' example, below the messages are all framed as "...must be a..."; alternatively,
+#' they could all be "...is not a...".
+
+check_character <- checker(is.character(x), "`%s` must be a 'character'.")
 
 check_scalar <- checker(length(x) == 1, "`%s` must be a scalar (length == 1).")
 
