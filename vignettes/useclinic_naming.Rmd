@@ -1,0 +1,148 @@
+---
+title: "Naming Conventions for Code Used in Learning"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Naming Conventions for Code Used in Learning}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(useclinic)
+```
+
+# The Upside
+
+The `useclinic` package creates other packages for distribution to learners. The
+created-package structure, assuming two topics "intro" and "advanced", looks like:
+
+```
+DESCRIPTION
+NAMESPACE
+data/
+data-raw/
+man/
+R/
+  aaa_internal.R
+  advanced_data.R
+  advanced_functions.R
+  advanced_plotting.R
+  checks.R
+  intro_data.R
+  intro_functions.R
+  intro_plotting.R
+  plotting.R
+  utilities.R
+inst/
+  scripts/                   # ... if the sessions have practicals
+    advanced/Step_00.R
+    intro/Step_00.R
+    solutions/
+      advanced/Step_00.R
+      intro/Step_00.R
+  tutorials/                 # ... if the sessions have tutorials
+    advanced/advanced.Rmd
+    intro/intro.Rmd
+```
+
+The created files have guidance comments, example code in the preferred style,
+and assorted preconstructed scaffolding.
+
+# Motivation
+
+The `useclinic` package reflects one of [ICI3D](https://www.ici3d.org) goals: to
+incubate training activities, in service of improving public health. Our main
+focus is modelling and analysis, which are very programming-oriented activities,
+and much of the field uses `R`. So: we have developed a package factory, which
+incorporates the lessons we've learned about providing good materials.
+
+The `useclinic` package extends the `usethis` package to apply our conventions
+automatically when generating new learning materials. We organize our workshops
+and clinics typically by "topics" - think of these as chapters in a book. They
+tend to be a coherent element of the overall coursework, and identifiable with
+a succinct label, though they also build upon (and in turn are built upon by)
+other material. We try to maintain a consistent "feel" across topics - e.g.
+similar visualizations and coding conventions across activities. We prefer to
+avoid minor distractions like changing color schemes, fonts, labels, and so on -
+this lets participants focus on key learning tasks.
+
+We also prefer to remove as much friction from our activities as possible. We
+typically cover a lot of material, so we try to avoid anything that slows people
+down and incorporate approaches that speed up working with the material.
+
+# Organizing Conventions
+
+Given that motivation, `useclinic` creates package skeletons that follow these
+conventions:
+
+## Practicals, Tutorials, Data, and Code
+
+The purpose of learning packages is provide materials for learning activities.
+As such, we include templates for "practicals" i.e. plaintext `R` scripts
+intended to be editted by learners, and we include templates for `learnr`-based
+interactive `rshiny` applications.
+
+We also use templates for data and code. Many computational exercises concern
+the ingestion, cleaning, and analysis of data, so including data in these
+packages is a frequent need.
+
+Lastly, this is a R programming language package - there should be `R` code! In
+keeping with our motivations, we're typically providing code to replace what
+learners would otherwise have to 1) write, but isn't really the point of the
+work, or 2) scroll past extensively. However, these are still functions that
+they still might to select among or be curious to see the internals of, so we
+encourage particular naming conventions (see the [last section](#naming)),
+thorough documentation *as well as* internal commenting in the function body -
+because those comments are visible when inspecting the function!
+
+One final note about code: we also tend to provide functions that 1) apply
+across several topics and 2) the mimic or enhance the functionality provided in
+other packages (e.g. `ggplot2` themes, scales, geoms, ...). For those cases,
+we do not use the "topic" style naming, but instead generally promote "pothole"
+case (as consistent with how we approach prepending topics to functions) and/or
+adopting the style of the mimicing or extended package.
+
+## Topics
+
+To gather together related practicals, tutorials, data, and code, we use
+"topics": shorthand, descriptive names for a general collection of bits that go
+together. The choice what features to categorize on is up to you; we often find
+the typical lecture+practical divisions are good. Imagine you had a few
+discussions plus practicals on probability, followed by a couple on statistics.
+You might then choose to organize by topics "prob" and "stat".
+
+These topics then inform the location and/or naming of files, functions, and
+data (though their internal titles can be more detailed).
+
+## Naming
+
+Finally, we apply topics as follows:
+
+ - for functions primarily used in the context of a particular topics activties,
+ they should be named in the style `topic_descriptive_name`. Then, when learners
+ are writing with the package, they can type `yourpkgname::topic_`+tab a see
+ proposals for all the relevant functions.
+ - these functions should generally be gathered together into a small number of
+ source files. We typically use `topic_functions.R`, `topic_plotting.R` and
+ (if data are present) `topic_data.R` (for documentation) and in the package
+ `data-raw/` directory, source for generating those data as `topic_DATANAME.R`.
+ The `topic_function.R` file covers general functions for the topic, while
+ `topic_plotting.R` should focus on visualization and data rearrangement
+ pertinent to visualization. You may find other small groups sensible as well -
+ e.g. `topic_storage.R` might be relevant if you have learners do lots of
+ reading / writing of data in non-visual formats. Feel free to use them!
+ We provide some functionality to take advantage of the "topic" naming
+ convention, but that only concerns itself with prefixes.
+ - for non-code, non-in-session-data materials, i.e. those distributed via the
+ `inst` directory, we create (as requested) `practicals` and `tutorials`
+ subdirectories. As relevant, these subdirectories have source scripts (and
+ solutions) and the source Rmarkdown / `learnr` application files for the
+ tutorials. Note: using the tutorials file will cause `Rstudio` to display the
+ tutorial under its table of contents for available tutorials.
