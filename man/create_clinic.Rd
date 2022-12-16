@@ -11,7 +11,7 @@ create_clinic(
   roxygen = TRUE,
   check_name = TRUE,
   open = rlang::is_interactive(),
-  sessions = list()
+  topics = list()
 )
 }
 \arguments{
@@ -41,9 +41,9 @@ error if not.}
 \item Otherwise, the working directory and active project is changed.
 }}
 
-\item{sessions}{named list-of-lists; each entry name corresponds to a session
+\item{topics}{named list-of-lists; each entry name corresponds to a topic
 shorthand title, with the entry list corresponding to the arguments to
-\code{\link[=create_session]{create_session()}}.}
+\code{\link[=create_topic]{create_topic()}}.}
 }
 \description{
 Creates a new ICI3D style clinic package
@@ -58,10 +58,10 @@ the package is used a bit like a conventional package.
 participants use during practical exercises, homework, etc.
 }
 
-The organizing structure is the list of "sessions" - the shorthand titles
+The organizing structure is the list of "topics" - the shorthand titles
 for the scripts and/or tutorials. This package builds directory and files
 consistent with this structure, as well as R code. Imagine your clinic has
-two sessions, "intro" and "advanced", and you use this function to create
+two topics, "intro" and "advanced", and you use this function to create
 a new clinic package. You should then find yourself with the following in
 the package directory:
 
@@ -82,13 +82,13 @@ R/
   plotting.R
   utilities.R
 inst/
-  scripts/                   # ... if the sessions have practicals
+  scripts/                   # ... if the topics have practicals
     advanced/Step_00.R
     intro/Step_00.R
     solutions/
       advanced/Step_00.R
       intro/Step_00.R
-  tutorials/                 # ... if the sessions have tutorials
+  tutorials/                 # ... if the topics have tutorials
     advanced/advanced.Rmd
     intro/intro.Rmd
 }\if{html}{\out{</div>}}

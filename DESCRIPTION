@@ -11,8 +11,8 @@ Description: This package provides a streamlined approach to creating
     a mixture of pre-written functions, data, exercise scripts, and interactive
     tutorials.
     This package implements a framing of materials in terms of themed
-    "sessions", which functions, data, scripts, and tutorials are in turn
-    organized by within the package (in addition to general, cross-session
+    "topics", which functions, data, scripts, and tutorials are in turn
+    organized by within the package (in addition to general, cross-topic
     objects).
     `useclinic` composes and wraps functions from the `usethis`
     library to accomplish setting up new learning packages, as well as

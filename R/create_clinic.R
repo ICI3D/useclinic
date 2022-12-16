@@ -5,9 +5,9 @@
 #'
 #' @inheritParams usethis::create_package
 #'
-#' @param sessions named list-of-lists; each entry name corresponds to a session
+#' @param topics named list-of-lists; each entry name corresponds to a topic
 #' shorthand title, with the entry list corresponding to the arguments to
-#' [create_session()].
+#' [create_topic()].
 #'
 #' @details This function extends [usethis::create_package()] to reflect the
 #' ICI3D-style clinic package approach to learning materials:
@@ -17,10 +17,10 @@
 #'  - The packages also include scripts and/or tutorials, which clinic
 #'  participants use during practical exercises, homework, etc.
 #'
-#' The organizing structure is the list of "sessions" - the shorthand titles
+#' The organizing structure is the list of "topics" - the shorthand titles
 #' for the scripts and/or tutorials. This package builds directory and files
 #' consistent with this structure, as well as R code. Imagine your clinic has
-#' two sessions, "intro" and "advanced", and you use this function to create
+#' two topics, "intro" and "advanced", and you use this function to create
 #' a new clinic package. You should then find yourself with the following in
 #' the package directory:
 #'
@@ -42,13 +42,13 @@
 #'   plotting.R
 #'   utilities.R
 #' inst/
-#'   scripts/                   # ... if the sessions have practicals
+#'   scripts/                   # ... if the topics have practicals
 #'     advanced/Step_00.R
 #'     intro/Step_00.R
 #'     solutions/
 #'       advanced/Step_00.R
 #'       intro/Step_00.R
-#'   tutorials/                 # ... if the sessions have tutorials
+#'   tutorials/                 # ... if the topics have tutorials
 #'     advanced/advanced.Rmd
 #'     intro/intro.Rmd
 #' ```
@@ -64,11 +64,11 @@
 create_clinic <- function (
   path, fields = list(), rstudio = rstudioapi::isAvailable(),
   roxygen = TRUE, check_name = TRUE, open = rlang::is_interactive(),
-  sessions = list()
+  topics = list()
 ) {
 
-  # TODO check session structure
-  # should be list(sessionname=list(...sessionneeds...))
+  # TODO check topic structure
+  # should be list(topicname=list(...topicneeds...))
 
   # do all the usethis::create_package() work
   usethis::create_package(
@@ -76,20 +76,25 @@ create_clinic <- function (
     roxygen = roxygen, check_name = check_name, open = FALSE
   )
 
-  anytutorials <- FALSE
-  for (sess in names(sessions)) {
-    sopts <- session_opt(sessions[[sess]])
-    create_session(
-      sopts,
-      package = path
-    )
-    anytutorials <- anytutorials || (length(sopts$tutorial) > 0)
+  if (!is.list(topics)) {
+    topics <- lapply(topics, \(s) list(shorthand=s)) |> setNames(topics)
   }
+
+  anytutorials <- Reduce(\(at, topt){
+    topt <- topic_opt(topt)
+    create_topic(topt, package = path)
+    return(at | (length(topt$tutorial) > 0))
+  }, topics, FALSE)
 
   if (anytutorials) use_package("learnr")
 
+  fs::file_copy(
+    fs::path_package("useclinic", "templates", "R", "checks.R"),
+    fs::path(path, "R", "checks.R"), overwrite = TRUE
+  )
+
   if (open) {
-    if (proj_activate(proj_get())) {
+    if (usethis::proj_activate(path)) {
       withr::deferred_clear()
     }
   }

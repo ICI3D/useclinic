@@ -41,7 +41,7 @@ helloworld <- function(...) {
 #' This one just some notes. When writing these practical scripts, we suggest
 #' that you leverage the package-ness of this distribution method. Where some
 #' chunk of functionality isn't really the point of the learning activity, you
-#' should implement it as `{{{pkgname}}}::{{{sessname}}}_somefunction(...)`.
+#' should implement it as `{{{pkgname}}}::{{{topic}}}_somefunction(...)`.
 #'
 #' Then it is there, inspectable by the students, but not distracting them with
 #' code noise from the content you want them to focus upon.

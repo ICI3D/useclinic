@@ -1,6 +1,6 @@
-#' The `{{{sessname}}}_functions.R` file is part of the set of R files templated in for each
-#' session. Recall: at the prompt, `{{{pkgname}}}::{{{sessname}}}_`+tab will
-#' suggest all the functions in this package associated with `{{{sessname}}}`.
+#' The `{{{topic}}}_functions.R` file is part of the set of R files templated
+#' in for each topic. Recall: at the prompt, `{{{pkgname}}}::{{{topic}}}_`+tab
+#' will suggest all the functions in this package associated with `{{{topic}}}`.
 #'
 #' This can be useful for learners trying to find the relevant code for an
 #' exercise or to inspect out of curiosity. Therefore in each topic, we
@@ -8,7 +8,7 @@
 #'
 #' @seealso `vignette("useclinic-naming")`
 #'
-#' The `{{{sessname}}}_functions.R` script should house those functions you pre-
+#' The `{{{topic}}}_functions.R` script should house those functions you pre-
 #' write to for analytical or simulation or munging tasks the learners don't
 #' benefit from writing or having to wade through.
 
@@ -20,9 +20,9 @@
 #'
 #' @export
 #' @examples
-#' df1 <- {{{sessname}}}_dataframer(seed = 8675309)
-#' {{{sessname}}}_egplotter(df1, c("firebrick", "dodgerblue"))
-{{{sessname}}}_dataframer <- function(seed = 0) {
+#' df1 <- {{{topic}}}_dataframer(seed = 8675309)
+#' {{{topic}}}_egplotter(df1, c("firebrick", "dodgerblue"))
+{{{topic}}}_dataframer <- function(seed = 0) {
   set.seed(seed)
   return(within(data.frame(
     xs = runif(100, 0, 100),

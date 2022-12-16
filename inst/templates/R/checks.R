@@ -17,8 +17,8 @@
 #'
 #' Now, on to this approach:
 #'
-#' The `checks.R` script is intended to include `check_...` functions
-#' used within various session functions. These functions are not intended to be
+#' The `checks.R` script is intended to include `check_...` validators that are
+#' used within various topic functions. These functions are not intended to be
 #' exported (though can be viewed with `{{{pkgname}}}:::check_...`). They are meant
 #' to seen by students if they inspect exported functions (i.e. they should be
 #' named informatively to indicate what arguments are being checked how), but

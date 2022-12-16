@@ -1,13 +1,13 @@
-#' {{{sessname}}} Topic Data
+#' "{{{topic}}}" Topic Data
 #'
-#' Data used in the _{{{sessname}}}_ topic scripts and tutorials.
+#' Data used in the _{{{topic}}}_ topic scripts and tutorials.
 #'
-#' @name {{{sessname}}}_data
+#' @name {{{topic}}}_data
 #' @keywords {{{pkgname}}} data
 NULL
 
-#' @rdname {{{sessname}}}_data
-"{{{sessname}}}_EXAMPLE_A"
+#' @rdname {{{topic}}}_data
+"{{{topic}}}_EXAMPLE_A"
 
-#' @rdname {{{sessname}}}_data
-"{{{sessname}}}_EXAMPLE_B"
+#' @rdname {{{topic}}}_data
+"{{{topic}}}_EXAMPLE_B"

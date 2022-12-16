@@ -4,7 +4,7 @@ output: learnr::tutorial
 runtime: shiny_prerendered
 description: >
   In the Rstudio -> Tutorial tab, this tutorial will be finable as
-  {{{fullname}}} (in bold), with a subscript {{{pkgname}}}: {{{sessname}}},
+  {{{fullname}}} (in bold), with a subscript {{{pkgname}}}: {{{topic}}},
   followed by this text as a description.
 ---
 
