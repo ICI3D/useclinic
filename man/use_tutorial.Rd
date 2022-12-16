@@ -2,17 +2,17 @@
 % Please edit documentation in R/use_tutorial.R
 \name{use_tutorial}
 \alias{use_tutorial}
-\title{Create a Session Tutorial}
+\title{Add a Tutorial}
 \usage{
-use_tutorial(name, sessionname)
+use_tutorial(name, topic)
 }
 \arguments{
 \item{name}{a string: the title of the tutorial; after sanitization, will
 also be the initial filename for the tutorial.}
 
-\item{sessionname}{a string: the shorthand session title}
+\item{topic}{a string: the shorthand topic title}
 }
 \description{
-Creates a \code{learnr} tutorial skeleton, associated with a
-particular package topic, in the current package.
+Creates a \code{learnr} tutorial skeleton in the current package,
+associated with a particular topic.
 }

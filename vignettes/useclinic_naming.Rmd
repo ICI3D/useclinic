@@ -41,13 +41,13 @@ R/
   plotting.R
   utilities.R
 inst/
-  scripts/                   # ... if the sessions have practicals
+  scripts/                   # ... if the topics have practicals
     advanced/Step_00.R
     intro/Step_00.R
     solutions/
       advanced/Step_00.R
       intro/Step_00.R
-  tutorials/                 # ... if the sessions have tutorials
+  tutorials/                 # ... if the topics have tutorials
     advanced/advanced.Rmd
     intro/intro.Rmd
 ```

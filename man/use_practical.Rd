@@ -2,15 +2,15 @@
 % Please edit documentation in R/use_practical.R
 \name{use_practical}
 \alias{use_practical}
-\title{Create a Session Practical}
+\title{Create a Practical}
 \usage{
-use_practical(name, sessionname)
+use_practical(name, topic)
 }
 \arguments{
-\item{name}{a string: the title of the tutorial; after sanitization, it will
-be the initial filename for the tutorial.}
+\item{name}{a string: the title of the practical; after sanitization, it will
+be the initial filename for the practical}
 
-\item{sessionname}{a string: the shorthand session title}
+\item{topic}{a string: the shorthand topic title}
 }
 \description{
 Creates a practical script skeleton, associated with a

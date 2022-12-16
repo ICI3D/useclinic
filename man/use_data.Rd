@@ -3,7 +3,7 @@
 \name{use_data}
 \alias{use_data}
 \alias{use_data_raw}
-\title{Create Clinic Session Data}
+\title{Create Clinic Topic Data}
 \usage{
 use_data(
   ...,
@@ -12,13 +12,13 @@ use_data(
   compress = "bzip2",
   version = 2,
   ascii = FALSE,
-  sessionname = NULL
+  topicname = NULL
 )
 
 use_data_raw(
   name = "DATASET",
   open = rlang::is_interactive(),
-  sessionname = NULL
+  topicname = NULL
 )
 }
 \arguments{
@@ -50,7 +50,7 @@ R 3.6.0 and can only be read by R versions 3.5.0 and higher.}
     \code{version >= 2}, a different ASCII representation is used which
     writes double/complex numbers as binary fractions.}
 
-\item{sessionname}{the session label this data is associated with.}
+\item{topicname}{the topic label this data is associated with.}
 
 \item{name}{Name of the dataset to be prepared for inclusion in the package.}
 
