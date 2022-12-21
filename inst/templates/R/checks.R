@@ -52,13 +52,13 @@
 #'
 #' helloworld
 #' helloworld("Carl") # works
-#' helloworld(1) # nope
+#' try(helloworld(1)) # nope
 #' a <- 1
-#' helloworld(a) # nope
+#' try(helloworld(a)) # nope
 #' a <- "Carl"
 #' helloworld(a) # works
-#' helloworld(c("Alice", "Bob")) # nope
-#' helloworld("") # nope
+#' try(helloworld(c("Alice", "Bob"))) # nope
+#' try(helloworld("")) # nope
 
 #' Get Initial Variable |>'d into Call Chain
 #'

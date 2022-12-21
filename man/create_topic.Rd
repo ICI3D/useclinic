@@ -4,7 +4,7 @@
 \alias{create_topic}
 \title{Create or Update Topic Skeleton}
 \usage{
-create_topic(..., package)
+create_topic(...)
 }
 \arguments{
 \item{...}{
@@ -21,8 +21,6 @@ corresponding practical script file skeletons}
     \item{\code{data}}{a character vector: if non-zero length, creates a topic data
 file for documentation.}
   }}
-
-\item{package}{the package directory}
 }
 \description{
 Create or Update Topic Skeleton

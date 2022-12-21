@@ -1,17 +1,8 @@
 
-#' @title Create a Practical
-#'
-#' @description Creates a practical script skeleton, associated with a
-#' particular package topic, in the current package.
-#'
-#' @param name a string: the title of the practical; after sanitization, it will
-#' be the initial filename for the practical
-#'
-#' @param topic a string: the shorthand topic title
-#'
+#' @rdname use_activity
 #' @export
 use_practical <- function(
-  name, topic
+  name, topic, overwrite
 ) {
   # TODO warn if topic doesn't yet exist
   stopifnot(
@@ -21,9 +12,9 @@ use_practical <- function(
 
   fname <- name |> fs::path_sanitize() |> gsub("[[:space:]]+", "_", x = _)
 
-  use_directory("inst", "practical", topic)
+  usethis::use_directory(file.path("inst", "practical", topic))
 
-  tpath <- use_clinic_template("practical", fname, topic, name)
+  tpath <- use_clinic_template("practical", fname, topic, name, overwrite)
 
   usethis::ui_todo("Finish the practical R code in {ui_value(tpath)}")
 

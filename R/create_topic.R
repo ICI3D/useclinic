@@ -3,15 +3,12 @@
 #'
 #' @inheritDotParams topic_opt
 #'
-#' @param package the package directory
-#'
 #' @export
 create_topic <- function(
-  ...,
-  package
+  ...
 ) {
   opts <- topic_opt(...)
-  usethis::local_project(package, force = TRUE)
+  usethis::local_project(force = TRUE)
   topic <- opts$shorthand
   overwrite <- opts$overwrite
   if (length(opts$practicals)) {
@@ -22,5 +19,7 @@ create_topic <- function(
     usethis::use_directory(file.path("inst", "tutorial", topic))
     for (nm in opts$tutorial) use_tutorial(nm, topic, overwrite)
   }
+
+  use_topic_templates(opts$shorthand, data = length(opts$data) != 0)
 
 }

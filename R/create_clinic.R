@@ -90,7 +90,7 @@ create_clinic <- function (
 
   fs::file_copy(
     fs::path_package("useclinic", "templates", "R", "checks.R"),
-    fs::path(path, "R", "checks.R"), overwrite = TRUE
+    usethis::proj_path("R", "checks", ext = "R"), overwrite = TRUE
   )
 
   if (open) {

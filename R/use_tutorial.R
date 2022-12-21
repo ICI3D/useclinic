@@ -1,17 +1,20 @@
 
-#' @title Add a Tutorial
+#' @title Add Learning Activites
 #'
-#' @description Creates a `learnr` tutorial skeleton in the current package,
+#' @description Creates `learnr` tutorials or R script skeletons,
 #' associated with a particular topic.
 #'
-#' @param name a string: the title of the tutorial; after sanitization, will
-#' also be the initial filename for the tutorial.
+#' @param name a string: the title of the activity; after sanitization, will
+#' also be the initial file name.
 #'
 #' @param topic a string: the shorthand topic title
 #'
+#' @param overwrite logical; overwrite existing materials?
+#'
+#' @name use_activity
 #' @export
 use_tutorial <- function(
-  name, topic
+  name, topic, overwrite
 ) {
   # TODO warn if topic doesn't yet exist
   stopifnot(
@@ -21,9 +24,9 @@ use_tutorial <- function(
 
   fname <- name |> fs::path_sanitize() |> gsub("[[:space:]]+", "_", x = _)
 
-  use_directory("inst", "tutorial", topic)
+  usethis::use_directory(file.path("inst", "tutorial", topic))
 
-  tpath <- use_clinic_template("tutorial", fname, pkgname, topic, name)
+  tpath <- use_clinic_template("tutorial", fname, topic, name, overwrite)
 
   usethis::ui_todo("Finish the tutorial Rmarkdown in {ui_value(tpath)}")
 
