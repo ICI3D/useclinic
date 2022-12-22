@@ -12,11 +12,11 @@ create_topic <- function(
   topic <- opts$shorthand
   overwrite <- opts$overwrite
   if (length(opts$practicals)) {
-    usethis::use_directory(file.path("inst", "practical", "solution", topic))
+    use_practical_directory(topic)
     for (nm in opts$practicals) use_practical(nm, topic, overwrite)
   }
   if (length(opts$tutorials)) {
-    usethis::use_directory(file.path("inst", "tutorial", topic))
+    use_tutorial_directory(topic)
     for (nm in opts$tutorial) use_tutorial(nm, topic, overwrite)
   }
 

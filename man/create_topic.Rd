@@ -13,7 +13,7 @@ create_topic(...)
     \item{\code{opts}}{a list: the reference options to use. Unspecified options will
 take the default values specified for other arguments}
     \item{\code{shorthand}}{a string: the topic shorthand name}
-    \item{\code{fullname}}{a string: the topic full name}
+    \item{\code{name}}{a string: the topic full name}
     \item{\code{tutorials}}{a character vector: if non-zero length, creates
 corresponding tutorial file skeletons}
     \item{\code{practicals}}{a character vector: if non-zero length, creates

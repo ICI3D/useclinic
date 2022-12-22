@@ -6,9 +6,9 @@
 \alias{use_tutorial}
 \title{Add Learning Activites}
 \usage{
-use_practical(name, topic, overwrite)
+use_practical(name, topic, overwrite = FALSE, open = rlang::is_interactive())
 
-use_tutorial(name, topic, overwrite)
+use_tutorial(name, topic, overwrite = FALSE, open = rlang::is_interactive())
 }
 \arguments{
 \item{name}{a string: the title of the activity; after sanitization, will
@@ -16,7 +16,9 @@ also be the initial file name.}
 
 \item{topic}{a string: the shorthand topic title}
 
-\item{overwrite}{logical; overwrite existing materials?}
+\item{overwrite}{logical: overwrite existing materials?}
+
+\item{open}{logical: open the resulting file?}
 }
 \description{
 Creates \code{learnr} tutorials or R script skeletons,

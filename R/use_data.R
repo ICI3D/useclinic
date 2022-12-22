@@ -44,23 +44,28 @@ use_data <- function(
 use_data_raw <- function(
   name = "DATASET",
   open = rlang::is_interactive(),
-  topicname = NULL
+  topic = NULL
 ) {
   # n.b.: this is rework of usethis::use_data_raw, since the internals
   # of that aren't exposed
   stopifnot(rlang::is_string(name))
-  if (!is.null(topicname)) {
-    # TODO check `topicname` is a string => stopifnot
+  if (!is.null(topic)) {
+    # TODO check `topic` is a string => stopifnot
     # TODO check for existence of topicname among repo topics,
     # warn if not
-    name <- paste0(topicname, "_", name)
+    name <- paste0(topic, "_", name)
+    usethis::use_directory(file.path("data-raw", topic), ignore = TRUE)
+  } else {
+    usethis::use_directory("data-raw", ignore = TRUE)
   }
-  usethis::use_directory("data-raw", ignore = TRUE)
 
-  r_path <-use_clinic_template(
+  pkgname <- desc::desc_get("Package", usethis::proj_path())
+
+  r_path <- use_clinic_template(
     "dataraw", usethis:::asciify(name),
-    pkgname, topic, name
+    topic, name, open = open
   )
+
   ui_todo("Finish the data preparation script in {ui_value(r_path)}")
   ui_todo("Use {ui_code('useclinic::use_data()')} to add prepared data to package")
 }

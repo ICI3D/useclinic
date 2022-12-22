@@ -7,7 +7,7 @@
 topic_opt(
   opts = list(),
   shorthand = "DUMMY",
-  fullname = shorthand,
+  name = shorthand,
   tutorials = c(),
   practicals = c(),
   data = c(),
@@ -20,7 +20,7 @@ take the default values specified for other arguments}
 
 \item{shorthand}{a string: the topic shorthand name}
 
-\item{fullname}{a string: the topic full name}
+\item{name}{a string: the topic full name}
 
 \item{tutorials}{a character vector: if non-zero length, creates
 corresponding tutorial file skeletons}

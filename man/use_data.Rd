@@ -15,11 +15,7 @@ use_data(
   topicname = NULL
 )
 
-use_data_raw(
-  name = "DATASET",
-  open = rlang::is_interactive(),
-  topicname = NULL
-)
+use_data_raw(name = "DATASET", open = rlang::is_interactive(), topic = NULL)
 }
 \arguments{
 \item{...}{Unquoted names of existing objects to save.}

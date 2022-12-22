@@ -6,7 +6,7 @@ use_topic_templates <- function(
   temps <- list(functions = "R/_functions.R", plotting = "R/_plotting.R")
   if (data) temps[["data"]] <- "R/_data.R"
 
-  pkgname <- usethis::proj_path() |> basename()
+  pkgname <- desc::desc_get("Package", usethis::proj_path())
 
   regrep <- \(template) gsub("_", paste0(topic, "_"), template)
 
@@ -28,15 +28,17 @@ use_topic_templates <- function(
 
 use_clinic_template <- function(
   template = c(
-    "tutorial", "practical", "dataraw"
+    "tutorials", "practicals", "dataraw"
   ),
-  filename, topic, name, ignore = FALSE, open = open, overwrite = FALSE
+  filename, topic = "", name, ignore = FALSE, open, overwrite = FALSE
 ) {
   template <- match.arg(template)
-  pkgname <- usethis::proj_path() |> basename()
+
+  pkgname <- desc::desc_get("Package", usethis::proj_path())
+
   reftemp <- c(
-    tutorial = "tutorial/topic_tutorial.Rmd",
-    practical = "practical/topic_practical.R",
+    tutorials = "tutorial/topic_tutorial.Rmd",
+    practicals = "practical/topic_practical.R",
     dataraw = "R/data-raw.R"
   )
   tpath <- switch(template,

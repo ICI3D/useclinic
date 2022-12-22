@@ -9,12 +9,14 @@
 #'
 #' @param topic a string: the shorthand topic title
 #'
-#' @param overwrite logical; overwrite existing materials?
+#' @param overwrite logical: overwrite existing materials?
+#'
+#' @param open logical: open the resulting file?
 #'
 #' @name use_activity
 #' @export
 use_tutorial <- function(
-  name, topic, overwrite
+  name, topic, overwrite = FALSE, open = rlang::is_interactive()
 ) {
   # TODO warn if topic doesn't yet exist
   stopifnot(
@@ -24,10 +26,14 @@ use_tutorial <- function(
 
   fname <- name |> fs::path_sanitize() |> gsub("[[:space:]]+", "_", x = _)
 
-  usethis::use_directory(file.path("inst", "tutorial", topic))
+  use_tutorial_directory(topic)
 
-  tpath <- use_clinic_template("tutorial", fname, topic, name, overwrite)
+  tpath <- use_clinic_template("tutorials", fname, topic, name, overwrite = overwrite, open = open)
 
   usethis::ui_todo("Finish the tutorial Rmarkdown in {ui_value(tpath)}")
 
+}
+
+use_tutorial_directory <- function(topic) {
+  usethis::use_directory(file.path("inst", "tutorials", topic))
 }

@@ -8,7 +8,7 @@
 #'
 #' @param shorthand a string: the topic shorthand name
 #'
-#' @param fullname a string: the topic full name
+#' @param name a string: the topic full name
 #'
 #' @param tutorials a character vector: if non-zero length, creates
 #' corresponding tutorial file skeletons
@@ -26,7 +26,7 @@
 topic_opt <- function(
   opts = list(),
   shorthand = "DUMMY",
-  fullname = shorthand,
+  name = shorthand,
   tutorials = c(),
   practicals = c(),
   data = c(),
@@ -35,8 +35,8 @@ topic_opt <- function(
   if (is.null(opts$shorthand)) {
     opts$shorthand <- shorthand
   }
-  if (is.null(opts$fullname)) {
-    opts$fullname <- fullname
+  if (is.null(opts$name)) {
+    opts$name <- name
   }
   if (is.null(opts$tutorials)) {
     opts$tutorials <- tutorials
