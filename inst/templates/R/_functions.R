@@ -12,16 +12,33 @@
 #' write to for analytical or simulation or munging tasks the learners don't
 #' benefit from writing or having to wade through.
 
+#' @title The `{{{topic}}}` Topic
+#'
+#' @description An outline of the point of this topic.
+#'
+#' @details Includes functions
+#'  - [{{{topic}}}_dataframer()], brief description
+#'  - ... other functions
+#'
+#' Also has data:
+#'  - [{{{topic}}}_EXAMPLE_A], brief description
+#'  - [{{{topic}}}_EXAMPLE_A], brief description
+#'
+#' @rdname {{{topic}}}
+
 #' @title An Example Function
 #'
 #' @param seed a random seed
 #'
 #' @return a `data.frame`, with columns `xs`, `ys`, and `ci`
 #'
-#' @export
 #' @examples
 #' df1 <- {{{topic}}}_dataframer(seed = 8675309)
 #' {{{topic}}}_egplotter(df1, c("firebrick", "dodgerblue"))
+#'
+#' @family {{{topic}}}
+#'
+#' @export
 {{{topic}}}_dataframer <- function(seed = 0) {
   set.seed(seed)
   return(within(data.frame(

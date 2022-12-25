@@ -4,6 +4,7 @@
 #'
 #' @name {{{topic}}}_data
 #' @keywords {{{pkgname}}} data
+#' @family {{{topic}}}
 NULL
 
 #' @rdname {{{topic}}}_data

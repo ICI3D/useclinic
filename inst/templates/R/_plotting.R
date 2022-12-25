@@ -20,10 +20,13 @@
 #'
 #' @param cols a vector of color codes
 #'
-#' @export
 #' @examples
 #' df1 <- {{{topic}}}_dataframer(seed = 8675309)
 #' {{{topic}}}_egplotter(df1, c("firebrick", "dodgerblue"))
+#'
+#' @family {{{topic}}}
+#'
+#' @export
 {{{topic}}}_egplotter <- function(df, cols) {
   plot(df$xs, df$ys, col = cols[df$ci])
 }
